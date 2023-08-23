@@ -11,6 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+      - name: Build
+        run: |
+          version=`git describe --tags`
+          npm i
+          npm run build
+          cd dist
+          zip -r headscale-ui-${{ github.ref_name }}.zip headscale-ui
+            
       - uses: actions/checkout@v3
       - name: Log in to DockerHub Registry
         uses: docker/login-action@v2
