@@ -29,5 +29,4 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/hdscaleui:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/hdscaleui:${{ version }}
   
